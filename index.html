@@ -1,207 +1,1258 @@
-<script>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 
-const coverPage = document.getElementById("coverPage");
-const coverVideoPage = document.getElementById("coverVideoPage");
-const coverVideo = document.getElementById("coverVideo");
-const openInvitation = document.getElementById("openInvitation");
+<head>
+  <meta charset="UTF-8">
 
-const contentPages = document.getElementById("contentPages");
-const scene2Video = document.getElementById("scene2Video");
-const scene2Page = document.getElementById("scene2Page");
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
+  >
 
-const music = document.getElementById("backgroundMusic");
-const musicButton = document.getElementById("musicButton");
+  <title>Happy Birthday Lina</title>
 
-const openRsvp = document.getElementById("openRsvp");
-const closeRsvp = document.getElementById("closeRsvp");
-const rsvpOverlay = document.getElementById("rsvpOverlay");
-const sendRsvp = document.getElementById("sendRsvp");
+  <style>
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* =========================
-   افتح هنا
-========================= */
+    html,
+    body {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      overflow-x: hidden;
+      font-family: Arial, sans-serif;
+    }
 
-openInvitation.addEventListener("click", function () {
+    body {
+      color: #4d3b4f;
+    }
 
-  // أولاً نظهر صفحة الفيديو
-  coverVideoPage.style.display = "block";
+    button,
+    input,
+    select {
+      font-family: inherit;
+    }
 
-  // نخفي الغلاف
-  coverPage.style.display = "none";
-
-  // نرجع لأول الفيديو
-  coverVideo.currentTime = 0;
-
-  // تشغيل الفيديو
-  const playPromise = coverVideo.play();
-
-  if (playPromise !== undefined) {
-    playPromise
-      .then(function () {
-        console.log("Cover video playing");
-      })
-      .catch(function (error) {
-        console.log("Video play error:", error);
-      });
-  }
-
-  // تشغيل الموسيقى اختياري
-  music.play()
-    .then(function () {
-      musicButton.style.display = "block";
-      musicButton.textContent = "🔊";
-    })
-    .catch(function () {
-      // عادي لو المتصفح منع الموسيقى
-    });
-
-});
+    img,
+    video {
+      display: block;
+      max-width: 100%;
+    }
 
 
-/* =========================
-   بعد انتهاء فيديو الكفر
-========================= */
+    /* =========================
+       GENERAL PAGE
+    ========================= */
 
-coverVideo.addEventListener("ended", function () {
+    .page {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      overflow: hidden;
+      background: #fff;
+    }
 
-  coverVideoPage.style.display = "none";
-
-  contentPages.style.display = "block";
-
-  window.scrollTo({
-    top: 0,
-    behavior: "auto"
-  });
-
-});
+    .full-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
 
 
-/* =========================
-   تشغيل الفيديو الثاني
-========================= */
+    /* =========================
+       01 — COVER PNG
+    ========================= */
 
-const sceneObserver = new IntersectionObserver(
-  function(entries) {
+    #coverPage {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
 
-    entries.forEach(function(entry) {
+      background: #fff;
 
-      if (
-        entry.isIntersecting &&
-        entry.intersectionRatio >= 0.5
-      ) {
+      overflow: hidden;
+    }
 
-        scene2Video.play().catch(function () {});
+    #coverImage {
+      display: block;
 
-      } else {
+      width: 100%;
+      height: auto;
 
-        scene2Video.pause();
+      object-fit: contain;
 
+      background: #fff;
+    }
+
+
+    /* زر افتح هنا */
+
+    #openInvitation {
+      position: absolute;
+
+      left: 50%;
+      bottom: 6%;
+
+      transform: translateX(-50%);
+
+      z-index: 50;
+
+      border: none;
+      outline: none;
+
+      border-radius: 999px;
+
+      padding: 14px 32px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f3a2bf,
+          #ea6e99
+        );
+
+      color: #fff;
+
+      font-size: 18px;
+      font-weight: 700;
+
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, .18);
+
+      cursor: pointer;
+
+      white-space: nowrap;
+    }
+
+    #openInvitation:active {
+      transform:
+        translateX(-50%)
+        scale(.97);
+    }
+
+
+    /* =========================
+       02 — COVER VIDEO
+    ========================= */
+
+    #coverVideoPage {
+      display: none;
+
+      width: 100%;
+      max-width: 500px;
+
+      margin: 0 auto;
+
+      background: #000;
+    }
+
+    #coverVideo {
+      width: 100%;
+      height: auto;
+
+      display: block;
+
+      background: #000;
+    }
+
+
+    /* =========================
+       CONTENT
+    ========================= */
+
+    #contentPages {
+      display: none;
+
+      width: 100%;
+      background: #fff;
+    }
+
+
+    /* =========================
+       03 — LOCATION
+    ========================= */
+
+    .location-page {
+      position: relative;
+    }
+
+    .map-button {
+      position: absolute;
+
+      left: 50%;
+      bottom: 7%;
+
+      transform: translateX(-50%);
+
+      z-index: 20;
+
+      width: 80%;
+
+      padding: 15px 18px;
+
+      border-radius: 999px;
+
+      text-decoration: none;
+      text-align: center;
+
+      color: #fff;
+
+      background:
+        linear-gradient(
+          135deg,
+          #77b8c3,
+          #5ca7b4
+        );
+
+      font-size: 17px;
+      font-weight: 700;
+
+      box-shadow:
+        0 8px 24px rgba(0,0,0,.16);
+    }
+
+
+    /* =========================
+       04 — SECOND VIDEO
+    ========================= */
+
+    #scene2Page {
+      position: relative;
+
+      background: #000;
+    }
+
+    #scene2Video {
+      display: block;
+
+      width: 100%;
+      height: auto;
+
+      background: #000;
+    }
+
+
+    /* =========================
+       05 — FINAL PAGE
+    ========================= */
+
+    .final-page {
+      position: relative;
+    }
+
+    .rsvp-main-button {
+      position: absolute;
+
+      left: 50%;
+      bottom: 8%;
+
+      transform: translateX(-50%);
+
+      z-index: 20;
+
+      width: 80%;
+
+      padding: 15px;
+
+      border: none;
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f19abb,
+          #eb6d99
+        );
+
+      color: #fff;
+
+      font-size: 18px;
+      font-weight: 700;
+
+      box-shadow:
+        0 8px 22px rgba(0,0,0,.16);
+
+      cursor: pointer;
+    }
+
+
+    /* =========================
+       RSVP POPUP
+    ========================= */
+
+    #rsvpOverlay {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 5000;
+
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+
+      background:
+        rgba(60, 45, 64, .48);
+
+      backdrop-filter: blur(6px);
+    }
+
+    #rsvpOverlay.show {
+      display: flex;
+    }
+
+    .rsvp-card {
+      position: relative;
+
+      width: min(92vw, 430px);
+
+      max-height: 90vh;
+
+      overflow-y: auto;
+
+      padding: 28px 22px 24px;
+
+      border-radius: 26px;
+
+      background:
+        rgba(255, 252, 248, .99);
+
+      box-shadow:
+        0 15px 50px rgba(0,0,0,.2);
+
+      text-align: center;
+    }
+
+    .rsvp-close {
+      position: absolute;
+
+      top: 12px;
+      left: 14px;
+
+      width: 38px;
+      height: 38px;
+
+      border: none;
+      border-radius: 50%;
+
+      background: #f4e7ec;
+
+      font-size: 20px;
+
+      cursor: pointer;
+    }
+
+    .rsvp-title {
+      margin-bottom: 8px;
+
+      font-size: 25px;
+
+      color: #d85f8d;
+    }
+
+    .rsvp-subtitle {
+      margin-bottom: 20px;
+
+      font-size: 14px;
+      line-height: 1.7;
+
+      color: #765f73;
+    }
+
+    .field {
+      margin-bottom: 14px;
+
+      text-align: right;
+    }
+
+    .field label {
+      display: block;
+
+      margin-bottom: 7px;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      color: #654f64;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+
+      padding: 14px 15px;
+
+      border:
+        1px solid #ead9e2;
+
+      border-radius: 14px;
+
+      background: #fff;
+
+      font-size: 16px;
+
+      color: #4f3e4d;
+
+      outline: none;
+    }
+
+    .attendance-options {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 10px;
+
+      margin-bottom: 18px;
+    }
+
+    .attendance-option input {
+      display: none;
+    }
+
+    .attendance-option label {
+      display: block;
+
+      padding: 13px 10px;
+
+      border-radius: 14px;
+
+      border:
+        1px solid #ead9e2;
+
+      background: #fff;
+
+      color: #654f64;
+
+      font-size: 15px;
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+    .attendance-option input:checked + label {
+      background: #f6d5e1;
+
+      border-color: #e38aaa;
+
+      color: #bd5079;
+    }
+
+    .send-rsvp {
+      width: 100%;
+
+      padding: 15px;
+
+      border: none;
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #ef90b3,
+          #e96897
+        );
+
+      color: #fff;
+
+      font-size: 17px;
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================
+       MUSIC BUTTON
+    ========================= */
+
+    #musicButton {
+      position: fixed;
+
+      top: 14px;
+      right: 14px;
+
+      width: 46px;
+      height: 46px;
+
+      z-index: 3000;
+
+      display: none;
+
+      border: none;
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,.92);
+
+      box-shadow:
+        0 4px 15px rgba(0,0,0,.14);
+
+      font-size: 19px;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 500px) {
+
+      .page,
+      #coverPage,
+      #coverVideoPage {
+        max-width: 100%;
       }
 
-    });
+      #openInvitation {
+        font-size: 17px;
 
-  },
-  {
-    threshold: [0, 0.5, 1]
-  }
-);
+        padding:
+          13px 28px;
+      }
 
-sceneObserver.observe(scene2Page);
+      .map-button,
+      .rsvp-main-button {
+        width: 82%;
 
+        font-size: 16px;
+      }
 
-/* =========================
-   MUSIC
-========================= */
+    }
 
-musicButton.addEventListener("click", function () {
-
-  if (music.paused) {
-
-    music.play();
-    musicButton.textContent = "🔊";
-
-  } else {
-
-    music.pause();
-    musicButton.textContent = "🔇";
-
-  }
-
-});
+  </style>
+</head>
 
 
-/* =========================
-   RSVP
-========================= */
-
-openRsvp.addEventListener("click", function () {
-
-  rsvpOverlay.classList.add("show");
-
-  document.body.style.overflow = "hidden";
-
-});
+<body>
 
 
-closeRsvp.addEventListener("click", closePopup);
+  <!-- =========================
+       01 — STATIC COVER
+  ========================= -->
+
+  <section id="coverPage">
+
+    <img
+      id="coverImage"
+      src="./cover.png"
+      alt="Happy Birthday Lina"
+    >
+
+    <button
+      id="openInvitation"
+      type="button"
+    >
+      افتح هنا 🎈
+    </button>
+
+  </section>
 
 
-rsvpOverlay.addEventListener("click", function(event) {
 
-  if (event.target === rsvpOverlay) {
-    closePopup();
-  }
+  <!-- =========================
+       02 — COVER VIDEO
+  ========================= -->
 
-});
+  <section
+    id="coverVideoPage"
+    class="page"
+  >
 
+    <video
+      id="coverVideo"
 
-function closePopup() {
+      muted
+      playsinline
+      webkit-playsinline
 
-  rsvpOverlay.classList.remove("show");
+      preload="metadata"
+    >
 
-  document.body.style.overflow = "";
+      <source
+        src="./cover.mp4"
+        type="video/mp4"
+      >
 
-}
+      متصفحك لا يدعم تشغيل الفيديو.
 
+    </video>
 
-/* =========================
-   إرسال تأكيد الحضور
-========================= */
-
-sendRsvp.addEventListener("click", function () {
-
-  const guestName =
-    document
-      .getElementById("guestName")
-      .value
-      .trim();
-
-  const guestCount =
-    document
-      .getElementById("guestCount")
-      .value;
-
-  const attendance =
-    document.querySelector(
-      'input[name="attendance"]:checked'
-    ).value;
+  </section>
 
 
-  if (!guestName) {
 
-    alert("اكتب الاسم أولاً 💗");
+  <!-- =========================
+       REST OF INVITATION
+  ========================= -->
 
-    return;
-
-  }
-
-
-  const whatsappNumber =
-    "970599123456";
+  <main id="contentPages">
 
 
-  const message =
+    <!-- =========================
+         03 — LOCATION
+    ========================= -->
+
+    <section
+      id="locationPage"
+      class="page location-page"
+    >
+
+      <img
+        src="./location.jpg"
+        class="full-image"
+        alt="قاعة إيليا رام الله"
+      >
+
+
+      <a
+        class="map-button"
+
+        href="https://maps.app.goo.gl/Y6F9H54yMgRiaBzA9"
+
+        target="_blank"
+
+        rel="noopener"
+      >
+        📍 افتح موقع قاعة إيليا
+      </a>
+
+    </section>
+
+
+
+    <!-- =========================
+         04 — SECOND VIDEO
+    ========================= -->
+
+    <section
+      id="scene2Page"
+      class="page"
+    >
+
+      <video
+        id="scene2Video"
+
+        muted
+        playsinline
+        webkit-playsinline
+
+        preload="metadata"
+      >
+
+        <source
+          src="./scene2.mp4"
+          type="video/mp4"
+        >
+
+        متصفحك لا يدعم تشغيل الفيديو.
+
+      </video>
+
+    </section>
+
+
+
+    <!-- =========================
+         05 — FINAL
+    ========================= -->
+
+    <section
+      id="finalPage"
+      class="page final-page"
+    >
+
+      <img
+        src="./final.jpg"
+        class="full-image"
+        alt="بانتظاركم في عيد ميلاد لينا"
+      >
+
+
+      <button
+        id="openRsvp"
+        class="rsvp-main-button"
+        type="button"
+      >
+        💗 تأكيد الحضور
+      </button>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       RSVP POPUP
+  ========================= -->
+
+  <div id="rsvpOverlay">
+
+    <div class="rsvp-card">
+
+      <button
+        id="closeRsvp"
+        class="rsvp-close"
+        type="button"
+        aria-label="إغلاق"
+      >
+        ×
+      </button>
+
+
+      <h2 class="rsvp-title">
+        تأكيد الحضور 🎈
+      </h2>
+
+
+      <p class="rsvp-subtitle">
+        يسعدنا مشاركتكم فرحة عيد ميلاد لينا 💗
+      </p>
+
+
+      <div class="field">
+
+        <label for="guestName">
+          الاسم
+        </label>
+
+        <input
+          id="guestName"
+
+          type="text"
+
+          placeholder="اكتب اسمك"
+
+          autocomplete="name"
+        >
+
+      </div>
+
+
+      <div class="field">
+
+        <label for="guestCount">
+          عدد الحضور
+        </label>
+
+        <select id="guestCount">
+
+          <option value="1">
+            شخص واحد
+          </option>
+
+          <option value="2">
+            شخصان
+          </option>
+
+          <option value="3">
+            3 أشخاص
+          </option>
+
+          <option value="4">
+            4 أشخاص
+          </option>
+
+          <option value="5">
+            5 أشخاص
+          </option>
+
+          <option value="6">
+            6 أشخاص
+          </option>
+
+        </select>
+
+      </div>
+
+
+
+      <div class="attendance-options">
+
+        <div class="attendance-option">
+
+          <input
+            type="radio"
+
+            id="attendingYes"
+
+            name="attendance"
+
+            value="سأحضر"
+
+            checked
+          >
+
+          <label for="attendingYes">
+            🎉 سأحضر
+          </label>
+
+        </div>
+
+
+        <div class="attendance-option">
+
+          <input
+            type="radio"
+
+            id="attendingNo"
+
+            name="attendance"
+
+            value="أعتذر عن الحضور"
+          >
+
+          <label for="attendingNo">
+            💗 أعتذر
+          </label>
+
+        </div>
+
+      </div>
+
+
+
+      <button
+        id="sendRsvp"
+        class="send-rsvp"
+        type="button"
+      >
+        إرسال التأكيد
+      </button>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================
+       MUSIC
+  ========================= -->
+
+  <audio
+    id="backgroundMusic"
+
+    loop
+
+    preload="metadata"
+  >
+
+    <source
+      src="./music.mp3"
+      type="audio/mpeg"
+    >
+
+  </audio>
+
+
+  <button
+    id="musicButton"
+    type="button"
+    aria-label="تشغيل أو إيقاف الموسيقى"
+  >
+    🔊
+  </button>
+
+
+
+  <script>
+
+    /* =========================
+       ELEMENTS
+    ========================= */
+
+    const coverPage =
+      document.getElementById("coverPage");
+
+    const coverVideoPage =
+      document.getElementById("coverVideoPage");
+
+    const coverVideo =
+      document.getElementById("coverVideo");
+
+    const openInvitation =
+      document.getElementById("openInvitation");
+
+    const contentPages =
+      document.getElementById("contentPages");
+
+    const scene2Video =
+      document.getElementById("scene2Video");
+
+    const scene2Page =
+      document.getElementById("scene2Page");
+
+    const music =
+      document.getElementById("backgroundMusic");
+
+    const musicButton =
+      document.getElementById("musicButton");
+
+    const openRsvp =
+      document.getElementById("openRsvp");
+
+    const closeRsvp =
+      document.getElementById("closeRsvp");
+
+    const rsvpOverlay =
+      document.getElementById("rsvpOverlay");
+
+    const sendRsvp =
+      document.getElementById("sendRsvp");
+
+
+
+    /* =========================
+       OPEN INVITATION
+    ========================= */
+
+    openInvitation.addEventListener(
+      "click",
+      function () {
+
+        /* نظهر الفيديو أولاً */
+
+        coverVideoPage.style.display =
+          "block";
+
+
+        /* نخفي الغلاف */
+
+        coverPage.style.display =
+          "none";
+
+
+        window.scrollTo(
+          0,
+          0
+        );
+
+
+        /* نعيد الفيديو للبداية */
+
+        try {
+
+          coverVideo.currentTime = 0;
+
+        } catch (error) {}
+
+
+        /* تشغيل الفيديو */
+
+        const coverPlay =
+          coverVideo.play();
+
+
+        if (
+          coverPlay !== undefined
+        ) {
+
+          coverPlay.catch(
+            function(error) {
+
+              console.log(
+                "Cover video error:",
+                error
+              );
+
+            }
+          );
+
+        }
+
+
+        /* تشغيل الموسيقى */
+
+        const musicPlay =
+          music.play();
+
+
+        if (
+          musicPlay !== undefined
+        ) {
+
+          musicPlay
+            .then(
+              function() {
+
+                musicButton.style.display =
+                  "block";
+
+                musicButton.textContent =
+                  "🔊";
+
+              }
+            )
+            .catch(
+              function() {
+
+                musicButton.style.display =
+                  "block";
+
+                musicButton.textContent =
+                  "🔇";
+
+              }
+            );
+
+        }
+
+      }
+    );
+
+
+
+    /* =========================
+       AFTER COVER VIDEO
+    ========================= */
+
+    coverVideo.addEventListener(
+      "ended",
+      function () {
+
+        coverVideo.pause();
+
+
+        coverVideoPage.style.display =
+          "none";
+
+
+        contentPages.style.display =
+          "block";
+
+
+        window.scrollTo(
+          0,
+          0
+        );
+
+      }
+    );
+
+
+
+    /* =========================
+       SECOND VIDEO
+       PLAYS WHEN VISIBLE
+    ========================= */
+
+    if (
+      "IntersectionObserver"
+      in window
+    ) {
+
+      const sceneObserver =
+        new IntersectionObserver(
+
+          function(entries) {
+
+            entries.forEach(
+              function(entry) {
+
+                if (
+                  entry.isIntersecting &&
+                  entry.intersectionRatio >= 0.5
+                ) {
+
+                  scene2Video
+                    .play()
+                    .catch(
+                      function() {}
+                    );
+
+                } else {
+
+                  scene2Video.pause();
+
+                }
+
+              }
+            );
+
+          },
+
+          {
+            threshold:
+              [
+                0,
+                0.5,
+                1
+              ]
+          }
+
+        );
+
+
+      sceneObserver.observe(
+        scene2Page
+      );
+
+    }
+
+
+
+    /* =========================
+       MUSIC BUTTON
+    ========================= */
+
+    musicButton.addEventListener(
+      "click",
+      function () {
+
+        if (
+          music.paused
+        ) {
+
+          music
+            .play()
+            .catch(
+              function() {}
+            );
+
+          musicButton.textContent =
+            "🔊";
+
+        } else {
+
+          music.pause();
+
+          musicButton.textContent =
+            "🔇";
+
+        }
+
+      }
+    );
+
+
+
+    /* =========================
+       RSVP OPEN
+    ========================= */
+
+    openRsvp.addEventListener(
+      "click",
+      function () {
+
+        rsvpOverlay.classList.add(
+          "show"
+        );
+
+        document.body.style.overflow =
+          "hidden";
+
+      }
+    );
+
+
+
+    /* =========================
+       RSVP CLOSE
+    ========================= */
+
+    function closePopup() {
+
+      rsvpOverlay.classList.remove(
+        "show"
+      );
+
+      document.body.style.overflow =
+        "";
+
+    }
+
+
+    closeRsvp.addEventListener(
+      "click",
+      closePopup
+    );
+
+
+    rsvpOverlay.addEventListener(
+      "click",
+      function(event) {
+
+        if (
+          event.target ===
+          rsvpOverlay
+        ) {
+
+          closePopup();
+
+        }
+
+      }
+    );
+
+
+
+    /* =========================
+       RSVP SEND
+    ========================= */
+
+    sendRsvp.addEventListener(
+      "click",
+      function () {
+
+        const guestName =
+          document
+            .getElementById(
+              "guestName"
+            )
+            .value
+            .trim();
+
+
+        const guestCount =
+          document
+            .getElementById(
+              "guestCount"
+            )
+            .value;
+
+
+        const attendance =
+          document.querySelector(
+            'input[name="attendance"]:checked'
+          ).value;
+
+
+        if (
+          !guestName
+        ) {
+
+          alert(
+            "اكتب الاسم أولاً 💗"
+          );
+
+          return;
+
+        }
+
+
+        /* غيري هذا الرقم لاحقاً */
+
+        const whatsappNumber =
+          "970599123456";
+
+
+        const message =
 `تأكيد حضور عيد ميلاد لينا 🎈
 
 الاسم: ${guestName}
@@ -213,15 +1264,18 @@ sendRsvp.addEventListener("click", function () {
 المكان: قاعة إيليا - رام الله`;
 
 
-  const whatsappURL =
-    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        const whatsappURL =
+          `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
 
-  window.open(
-    whatsappURL,
-    "_blank"
-  );
+        window.location.href =
+          whatsappURL;
 
-});
+      }
+    );
 
-</script>
+  </script>
+
+</body>
+
+</html>
