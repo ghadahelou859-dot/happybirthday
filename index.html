@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
 
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-  />
+  >
 
   <title>Happy Birthday Lina</title>
 
@@ -45,62 +46,53 @@
       background: #fff;
     }
 
-    .full-media {
+    .full-image {
       display: block;
       width: 100%;
       height: auto;
-      vertical-align: middle;
-    }
-
-    .hidden {
-      display: none !important;
     }
 
     /* =========================
-       COVER VIDEO
+       01 — STATIC COVER PNG
     ========================= */
 
     #coverPage {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
       height: 100vh;
-      min-height: 100vh;
-      background: #000;
+      margin: 0 auto;
+      overflow: hidden;
+      background: #fff;
     }
 
-    #coverVideo,
-    #coverPoster {
+    #coverImage {
       width: 100%;
       height: 100%;
-      object-fit: cover;
       display: block;
+      object-fit: cover;
     }
-
-    #coverPoster {
-      position: absolute;
-      inset: 0;
-      display: none;
-    }
-
-    /* =========================
-       OPEN BUTTON
-    ========================= */
 
     #openInvitation {
       position: absolute;
+
       left: 50%;
       bottom: 8%;
-      transform: translateX(-50%) translateY(20px);
+
+      transform: translateX(-50%);
+
       z-index: 20;
 
       border: none;
       border-radius: 999px;
 
-      padding: 15px 34px;
+      padding: 15px 36px;
 
       background:
         linear-gradient(
           135deg,
-          #f3a9c2,
-          #ef78a1
+          #f4a5c1,
+          #ec729b
         );
 
       color: #fff;
@@ -109,34 +101,27 @@
       font-weight: 700;
 
       box-shadow:
-        0 8px 25px rgba(0, 0, 0, .16);
-
-      opacity: 0;
-      pointer-events: none;
-
-      transition:
-        opacity .7s ease,
-        transform .7s ease;
+        0 8px 25px rgba(0,0,0,.17);
 
       cursor: pointer;
     }
 
-    #openInvitation.show {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateX(-50%) translateY(0);
+    #openInvitation:active {
+      transform:
+        translateX(-50%)
+        scale(.97);
     }
 
     /* =========================
-       SCENE 2
+       02 — COVER VIDEO
     ========================= */
 
-    #scene2Page {
+    #coverVideoPage {
       display: none;
       background: #000;
     }
 
-    #scene2Video {
+    #coverVideo {
       display: block;
       width: 100%;
       height: auto;
@@ -166,7 +151,7 @@
 
       transform: translateX(-50%);
 
-      width: 78%;
+      width: 80%;
 
       padding: 16px 20px;
 
@@ -176,7 +161,7 @@
         linear-gradient(
           135deg,
           #75b7c2,
-          #5da9b7
+          #5ca8b5
         );
 
       color: #fff;
@@ -187,17 +172,27 @@
       font-weight: 700;
 
       box-shadow:
-        0 8px 24px rgba(0, 0, 0, .15);
+        0 8px 24px rgba(0,0,0,.15);
 
-      z-index: 5;
-    }
-
-    .map-button:active {
-      transform: translateX(-50%) scale(.97);
+      z-index: 10;
     }
 
     /* =========================
-       FINAL PAGE
+       SECOND VIDEO
+    ========================= */
+
+    #scene2Page {
+      background: #000;
+    }
+
+    #scene2Video {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* =========================
+       FINAL
     ========================= */
 
     .final-page {
@@ -212,7 +207,7 @@
 
       transform: translateX(-50%);
 
-      width: 78%;
+      width: 80%;
 
       padding: 16px;
 
@@ -222,8 +217,8 @@
       background:
         linear-gradient(
           135deg,
-          #f29abc,
-          #ed6d9b
+          #f19abb,
+          #eb6d99
         );
 
       color: #fff;
@@ -232,11 +227,11 @@
       font-weight: 700;
 
       box-shadow:
-        0 8px 22px rgba(0, 0, 0, .15);
+        0 8px 22px rgba(0,0,0,.15);
 
       cursor: pointer;
 
-      z-index: 5;
+      z-index: 10;
     }
 
     /* =========================
@@ -257,7 +252,7 @@
       padding: 20px;
 
       background:
-        rgba(64, 49, 67, .45);
+        rgba(64,49,67,.45);
 
       backdrop-filter: blur(7px);
     }
@@ -269,23 +264,24 @@
     .rsvp-card {
       position: relative;
 
-      width: min(92vw, 430px);
+      width: min(92vw,430px);
 
       padding: 28px 22px 24px;
 
       border-radius: 28px;
 
       background:
-        rgba(255, 252, 248, .98);
+        rgba(255,252,248,.98);
 
       box-shadow:
-        0 15px 50px rgba(0, 0, 0, .2);
+        0 15px 50px rgba(0,0,0,.2);
 
       text-align: center;
     }
 
     .rsvp-close {
       position: absolute;
+
       top: 12px;
       left: 14px;
 
@@ -353,11 +349,6 @@
       outline: none;
     }
 
-    .field input:focus,
-    .field select:focus {
-      border-color: #e788ab;
-    }
-
     .attendance-options {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -420,24 +411,6 @@
       cursor: pointer;
     }
 
-    #rsvpSuccess {
-      display: none;
-
-      padding-top: 10px;
-
-      line-height: 1.8;
-
-      color: #665267;
-    }
-
-    #rsvpSuccess.show {
-      display: block;
-    }
-
-    #rsvpForm.hidden {
-      display: none;
-    }
-
     /* =========================
        MUSIC BUTTON
     ========================= */
@@ -459,10 +432,10 @@
       border-radius: 50%;
 
       background:
-        rgba(255, 255, 255, .9);
+        rgba(255,255,255,.9);
 
       box-shadow:
-        0 4px 15px rgba(0, 0, 0, .14);
+        0 4px 15px rgba(0,0,0,.14);
 
       font-size: 20px;
 
@@ -483,47 +456,22 @@
       }
 
     }
-
   </style>
 </head>
 
-
 <body>
 
-  <!-- =========================================
-       PAGE 01 — COVER VIDEO
-  ========================================== -->
+  <!-- =========================
+       01 — COVER PNG
+  ========================= -->
 
-  <section
-    id="coverPage"
-    class="page"
-  >
-
-    <video
-      id="coverVideo"
-      autoplay
-      muted
-      playsinline
-      preload="auto"
-    >
-      <source
-        src="cover.mp4"
-        type="video/mp4"
-      >
-    </video>
-
-
-    <!--
-      هاي الصورة بتظهر بعد انتهاء فيديو الغلاف.
-      الأفضل تكون نفس صورة بداية الغلاف.
-    -->
+  <section id="coverPage">
 
     <img
-      id="coverPoster"
-      src="cover.jpg"
+      id="coverImage"
+      src="cover.png"
       alt="Happy Birthday Lina"
     >
-
 
     <button
       id="openInvitation"
@@ -535,24 +483,23 @@
   </section>
 
 
-
-  <!-- =========================================
-       PAGE 02 — SECOND VIDEO
-  ========================================== -->
+  <!-- =========================
+       02 — COVER VIDEO
+  ========================= -->
 
   <section
-    id="scene2Page"
+    id="coverVideoPage"
     class="page"
   >
 
     <video
-      id="scene2Video"
+      id="coverVideo"
       muted
       playsinline
       preload="auto"
     >
       <source
-        src="scene2.mp4"
+        src="cover.mp4"
         type="video/mp4"
       >
     </video>
@@ -560,36 +507,15 @@
   </section>
 
 
-
-  <!-- =========================================
-       REST OF INVITATION
-  ========================================== -->
+  <!-- =========================
+       باقي الدعوة
+  ========================= -->
 
   <main id="contentPages">
 
-
-    <!-- =========================================
-         PAGE 03 — INFORMATION
-    ========================================== -->
-
-    <section
-      id="infoPage"
-      class="page"
-    >
-
-      <img
-        src="info.jpg"
-        class="full-media"
-        alt="تفاصيل عيد ميلاد لينا"
-      >
-
-    </section>
-
-
-
-    <!-- =========================================
-         PAGE 04 — LOCATION
-    ========================================== -->
+    <!-- =========================
+         03 — LOCATION JPG
+    ========================= -->
 
     <section
       id="locationPage"
@@ -598,10 +524,9 @@
 
       <img
         src="location.jpg"
-        class="full-media"
-        alt="موقع قاعة إيليا رام الله"
+        class="full-image"
+        alt="قاعة إيليا رام الله"
       >
-
 
       <a
         class="map-button"
@@ -615,10 +540,33 @@
     </section>
 
 
+    <!-- =========================
+         04 — SECOND VIDEO
+    ========================= -->
 
-    <!-- =========================================
-         PAGE 05 — RSVP
-    ========================================== -->
+    <section
+      id="scene2Page"
+      class="page"
+    >
+
+      <video
+        id="scene2Video"
+        muted
+        playsinline
+        preload="metadata"
+      >
+        <source
+          src="scene2.mp4"
+          type="video/mp4"
+        >
+      </video>
+
+    </section>
+
+
+    <!-- =========================
+         05 — FINAL JPG
+    ========================= -->
 
     <section
       id="finalPage"
@@ -627,10 +575,9 @@
 
       <img
         src="final.jpg"
-        class="full-media"
+        class="full-image"
         alt="بانتظاركم في عيد ميلاد لينا"
       >
-
 
       <button
         id="openRsvp"
@@ -645,10 +592,9 @@
   </main>
 
 
-
-  <!-- =========================================
+  <!-- =========================
        RSVP POPUP
-  ========================================== -->
+  ========================= -->
 
   <div id="rsvpOverlay">
 
@@ -658,155 +604,119 @@
         id="closeRsvp"
         class="rsvp-close"
         type="button"
-        aria-label="إغلاق"
       >
         ×
       </button>
 
+      <h2 class="rsvp-title">
+        تأكيد الحضور 🎈
+      </h2>
 
-      <div id="rsvpForm">
+      <p class="rsvp-subtitle">
+        يسعدنا مشاركتكم فرحة عيد ميلاد لينا 💗
+      </p>
 
-        <h2 class="rsvp-title">
-          تأكيد الحضور 🎈
-        </h2>
+      <div class="field">
 
-        <p class="rsvp-subtitle">
-          يسعدنا مشاركتكم فرحة عيد ميلاد لينا 💗
-        </p>
+        <label for="guestName">
+          الاسم
+        </label>
 
+        <input
+          id="guestName"
+          type="text"
+          placeholder="اكتب اسمك"
+        >
 
-        <div class="field">
+      </div>
 
-          <label for="guestName">
-            الاسم
-          </label>
+      <div class="field">
+
+        <label for="guestCount">
+          عدد الحضور
+        </label>
+
+        <select id="guestCount">
+
+          <option value="1">
+            شخص واحد
+          </option>
+
+          <option value="2">
+            شخصان
+          </option>
+
+          <option value="3">
+            3 أشخاص
+          </option>
+
+          <option value="4">
+            4 أشخاص
+          </option>
+
+          <option value="5">
+            5 أشخاص
+          </option>
+
+          <option value="6">
+            6 أشخاص
+          </option>
+
+        </select>
+
+      </div>
+
+      <div class="attendance-options">
+
+        <div class="attendance-option">
 
           <input
-            id="guestName"
-            type="text"
-            placeholder="اكتب اسمك"
-            autocomplete="name"
+            type="radio"
+            id="attendingYes"
+            name="attendance"
+            value="سأحضر"
+            checked
           >
 
-        </div>
-
-
-        <div class="field">
-
-          <label for="guestCount">
-            عدد الحضور
+          <label for="attendingYes">
+            🎉 سأحضر
           </label>
 
-          <select id="guestCount">
-
-            <option value="1">
-              شخص واحد
-            </option>
-
-            <option value="2">
-              شخصان
-            </option>
-
-            <option value="3">
-              3 أشخاص
-            </option>
-
-            <option value="4">
-              4 أشخاص
-            </option>
-
-            <option value="5">
-              5 أشخاص
-            </option>
-
-            <option value="6">
-              6 أشخاص
-            </option>
-
-          </select>
-
         </div>
 
+        <div class="attendance-option">
 
-        <div class="field">
-          <label>
-            هل ستشاركوننا الاحتفال؟
+          <input
+            type="radio"
+            id="attendingNo"
+            name="attendance"
+            value="أعتذر عن الحضور"
+          >
+
+          <label for="attendingNo">
+            💗 أعتذر
           </label>
-        </div>
-
-
-        <div class="attendance-options">
-
-          <div class="attendance-option">
-
-            <input
-              type="radio"
-              id="attendingYes"
-              name="attendance"
-              value="سأحضر"
-              checked
-            >
-
-            <label for="attendingYes">
-              🎉 سأحضر
-            </label>
-
-          </div>
-
-
-          <div class="attendance-option">
-
-            <input
-              type="radio"
-              id="attendingNo"
-              name="attendance"
-              value="أعتذر عن الحضور"
-            >
-
-            <label for="attendingNo">
-              💗 أعتذر
-            </label>
-
-          </div>
 
         </div>
-
-
-        <button
-          id="sendRsvp"
-          class="send-rsvp"
-          type="button"
-        >
-          إرسال التأكيد
-        </button>
 
       </div>
 
-
-
-      <div id="rsvpSuccess">
-
-        <h2 class="rsvp-title">
-          شكرًا 💗
-        </h2>
-
-        <p>
-          تم تجهيز تأكيد حضوركم.
-          <br>
-          بانتظاركم لنحتفل مع لينا 🎈
-        </p>
-
-      </div>
+      <button
+        id="sendRsvp"
+        class="send-rsvp"
+        type="button"
+      >
+        إرسال التأكيد
+      </button>
 
     </div>
 
   </div>
 
 
-
-  <!-- =========================================
+  <!-- =========================
        MUSIC
-  ========================================== -->
+  ========================= -->
 
   <audio
     id="backgroundMusic"
@@ -819,15 +729,12 @@
     >
   </audio>
 
-
   <button
     id="musicButton"
     type="button"
-    aria-label="تشغيل أو إيقاف الموسيقى"
   >
     🔊
   </button>
-
 
 
   <script>
@@ -835,23 +742,23 @@
     const coverPage =
       document.getElementById("coverPage");
 
+    const coverVideoPage =
+      document.getElementById("coverVideoPage");
+
     const coverVideo =
       document.getElementById("coverVideo");
-
-    const coverPoster =
-      document.getElementById("coverPoster");
 
     const openInvitation =
       document.getElementById("openInvitation");
 
-    const scene2Page =
-      document.getElementById("scene2Page");
+    const contentPages =
+      document.getElementById("contentPages");
 
     const scene2Video =
       document.getElementById("scene2Video");
 
-    const contentPages =
-      document.getElementById("contentPages");
+    const scene2Page =
+      document.getElementById("scene2Page");
 
     const music =
       document.getElementById("backgroundMusic");
@@ -871,43 +778,10 @@
     const sendRsvp =
       document.getElementById("sendRsvp");
 
-    const rsvpForm =
-      document.getElementById("rsvpForm");
 
-    const rsvpSuccess =
-      document.getElementById("rsvpSuccess");
-
-
-    /* =========================================
-       بعد انتهاء فيديو الغلاف
-    ========================================== */
-
-    coverVideo.addEventListener(
-      "ended",
-      function () {
-
-        coverPoster.style.display =
-          "block";
-
-        coverVideo.style.display =
-          "none";
-
-
-        setTimeout(() => {
-
-          openInvitation.classList.add(
-            "show"
-          );
-
-        }, 300);
-
-      }
-    );
-
-
-    /* =========================================
-       افتح هنا
-    ========================================== */
+    /* =========================
+       OPEN INVITATION
+    ========================= */
 
     openInvitation.addEventListener(
       "click",
@@ -935,7 +809,7 @@
         coverPage.style.display =
           "none";
 
-        scene2Page.style.display =
+        coverVideoPage.style.display =
           "block";
 
 
@@ -945,28 +819,31 @@
         });
 
 
-        scene2Video.currentTime = 0;
+        coverVideo.currentTime = 0;
 
-        scene2Video.play();
+        coverVideo.play();
 
       }
     );
 
 
-    /* =========================================
-       بعد انتهاء الفيديو الثاني
-    ========================================== */
+    /* =========================
+       AFTER COVER VIDEO
+    ========================= */
 
-    scene2Video.addEventListener(
+    coverVideo.addEventListener(
       "ended",
       function () {
+
+        coverVideoPage.style.display =
+          "none";
 
         contentPages.style.display =
           "block";
 
 
         document
-          .getElementById("infoPage")
+          .getElementById("locationPage")
           .scrollIntoView({
             behavior: "smooth",
             block: "start"
@@ -976,9 +853,56 @@
     );
 
 
-    /* =========================================
+    /* =========================
+       SCENE 2 AUTOPLAY
+    ========================= */
+
+    const sceneObserver =
+      new IntersectionObserver(
+
+        function(entries) {
+
+          entries.forEach(
+            function(entry) {
+
+              if (
+                entry.isIntersecting &&
+                entry.intersectionRatio > 0.55
+              ) {
+
+                scene2Video.play()
+                  .catch(function(){});
+
+              } else {
+
+                scene2Video.pause();
+
+              }
+
+            }
+          );
+
+        },
+
+        {
+          threshold: [
+            0,
+            0.55,
+            1
+          ]
+        }
+
+      );
+
+
+    sceneObserver.observe(
+      scene2Page
+    );
+
+
+    /* =========================
        MUSIC
-    ========================================== */
+    ========================= */
 
     musicButton.addEventListener(
       "click",
@@ -1004,9 +928,9 @@
     );
 
 
-    /* =========================================
+    /* =========================
        RSVP OPEN
-    ========================================== */
+    ========================= */
 
     openRsvp.addEventListener(
       "click",
@@ -1023,25 +947,25 @@
     );
 
 
-    /* =========================================
+    /* =========================
        RSVP CLOSE
-    ========================================== */
+    ========================= */
 
     closeRsvp.addEventListener(
       "click",
-      closeRsvpPopup
+      closePopup
     );
 
 
     rsvpOverlay.addEventListener(
       "click",
-      function (event) {
+      function(event) {
 
         if (
           event.target === rsvpOverlay
         ) {
 
-          closeRsvpPopup();
+          closePopup();
 
         }
 
@@ -1049,7 +973,7 @@
     );
 
 
-    function closeRsvpPopup() {
+    function closePopup() {
 
       rsvpOverlay.classList.remove(
         "show"
@@ -1061,9 +985,9 @@
     }
 
 
-    /* =========================================
+    /* =========================
        SEND RSVP
-    ========================================== */
+    ========================= */
 
     sendRsvp.addEventListener(
       "click",
@@ -1100,7 +1024,7 @@
 
 
         /*
-          بدلي الرقم التالي برقم الواتساب الحقيقي
+          غيري الرقم للرقم الحقيقي
           بدون + وبدون مسافات
         */
 
@@ -1109,7 +1033,7 @@
 
 
         const message =
-          `تأكيد حضور عيد ميلاد لينا 🎈
+`تأكيد حضور عيد ميلاد لينا 🎈
 
 الاسم: ${guestName}
 الحالة: ${attendance}
@@ -1124,23 +1048,10 @@
           `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
 
-        rsvpForm.classList.add(
-          "hidden"
+        window.open(
+          whatsappURL,
+          "_blank"
         );
-
-        rsvpSuccess.classList.add(
-          "show"
-        );
-
-
-        setTimeout(() => {
-
-          window.open(
-            whatsappURL,
-            "_blank"
-          );
-
-        }, 500);
 
       }
     );
