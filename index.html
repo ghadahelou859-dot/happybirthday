@@ -6,13 +6,12 @@
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover"
   >
 
   <title>Happy Birthday Lina</title>
 
   <style>
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -24,7 +23,7 @@
       width: 100%;
       margin: 0;
       padding: 0;
-      background: #ffffff;
+      background: #fff;
       overflow-x: hidden;
       font-family: Arial, sans-serif;
     }
@@ -33,22 +32,17 @@
       color: #4d3b4f;
     }
 
+    img,
+    video {
+      display: block;
+      width: 100%;
+    }
+
     button,
     input,
     select {
       font-family: inherit;
     }
-
-    img,
-    video {
-      display: block;
-      max-width: 100%;
-    }
-
-
-    /* =========================
-       GENERAL PAGE
-    ========================= */
 
     .page {
       position: relative;
@@ -60,11 +54,10 @@
     }
 
     .full-image {
+      display: block;
       width: 100%;
       height: auto;
-      display: block;
     }
-
 
     /* =========================
        01 — COVER PNG
@@ -75,69 +68,49 @@
       width: 100%;
       max-width: 500px;
       margin: 0 auto;
-
-      background: #fff;
-
       overflow: hidden;
+      background: #fff;
     }
 
     #coverImage {
-      display: block;
-
       width: 100%;
       height: auto;
-
       object-fit: contain;
-
-      background: #fff;
     }
-
-
-    /* زر افتح هنا */
 
     #openInvitation {
       position: absolute;
-
       left: 50%;
       bottom: 6%;
-
       transform: translateX(-50%);
 
-      z-index: 50;
+      z-index: 20;
 
       border: none;
-      outline: none;
-
       border-radius: 999px;
 
       padding: 14px 32px;
 
-      background:
-        linear-gradient(
-          135deg,
-          #f3a2bf,
-          #ea6e99
-        );
+      background: linear-gradient(
+        135deg,
+        #f3a2bf,
+        #ea6e99
+      );
 
       color: #fff;
-
       font-size: 18px;
       font-weight: 700;
 
       box-shadow:
-        0 8px 24px rgba(0, 0, 0, .18);
+        0 8px 24px rgba(0,0,0,.18);
 
       cursor: pointer;
-
       white-space: nowrap;
     }
 
     #openInvitation:active {
-      transform:
-        translateX(-50%)
-        scale(.97);
+      transform: translateX(-50%) scale(.97);
     }
-
 
     /* =========================
        02 — COVER VIDEO
@@ -145,24 +118,17 @@
 
     #coverVideoPage {
       display: none;
-
       width: 100%;
       max-width: 500px;
-
       margin: 0 auto;
-
       background: #000;
     }
 
     #coverVideo {
       width: 100%;
       height: auto;
-
-      display: block;
-
       background: #000;
     }
-
 
     /* =========================
        CONTENT
@@ -170,14 +136,12 @@
 
     #contentPages {
       display: none;
-
       width: 100%;
       background: #fff;
     }
 
-
     /* =========================
-       03 — LOCATION
+       LOCATION
     ========================= */
 
     .location-page {
@@ -186,15 +150,13 @@
 
     .map-button {
       position: absolute;
-
       left: 50%;
       bottom: 7%;
-
       transform: translateX(-50%);
 
       z-index: 20;
 
-      width: 80%;
+      width: 82%;
 
       padding: 15px 18px;
 
@@ -205,12 +167,11 @@
 
       color: #fff;
 
-      background:
-        linear-gradient(
-          135deg,
-          #77b8c3,
-          #5ca7b4
-        );
+      background: linear-gradient(
+        135deg,
+        #76b8c3,
+        #5ca7b4
+      );
 
       font-size: 17px;
       font-weight: 700;
@@ -219,29 +180,26 @@
         0 8px 24px rgba(0,0,0,.16);
     }
 
+    .map-button:active {
+      transform: translateX(-50%) scale(.97);
+    }
 
     /* =========================
-       04 — SECOND VIDEO
+       SCENE 2
     ========================= */
 
     #scene2Page {
-      position: relative;
-
       background: #000;
     }
 
     #scene2Video {
-      display: block;
-
       width: 100%;
       height: auto;
-
       background: #000;
     }
 
-
     /* =========================
-       05 — FINAL PAGE
+       FINAL
     ========================= */
 
     .final-page {
@@ -250,27 +208,24 @@
 
     .rsvp-main-button {
       position: absolute;
-
       left: 50%;
       bottom: 8%;
-
       transform: translateX(-50%);
 
       z-index: 20;
 
-      width: 80%;
+      width: 82%;
 
       padding: 15px;
 
       border: none;
       border-radius: 999px;
 
-      background:
-        linear-gradient(
-          135deg,
-          #f19abb,
-          #eb6d99
-        );
+      background: linear-gradient(
+        135deg,
+        #f19abb,
+        #eb6d99
+      );
 
       color: #fff;
 
@@ -283,27 +238,23 @@
       cursor: pointer;
     }
 
-
     /* =========================
        RSVP POPUP
     ========================= */
 
     #rsvpOverlay {
       position: fixed;
-
       inset: 0;
 
       z-index: 5000;
 
       display: none;
-
       align-items: center;
       justify-content: center;
 
       padding: 20px;
 
-      background:
-        rgba(60, 45, 64, .48);
+      background: rgba(60,45,64,.48);
 
       backdrop-filter: blur(6px);
     }
@@ -316,17 +267,14 @@
       position: relative;
 
       width: min(92vw, 430px);
-
       max-height: 90vh;
-
       overflow-y: auto;
 
       padding: 28px 22px 24px;
 
       border-radius: 26px;
 
-      background:
-        rgba(255, 252, 248, .99);
+      background: rgba(255,252,248,.99);
 
       box-shadow:
         0 15px 50px rgba(0,0,0,.2);
@@ -372,13 +320,11 @@
 
     .field {
       margin-bottom: 14px;
-
       text-align: right;
     }
 
     .field label {
       display: block;
-
       margin-bottom: 7px;
 
       font-size: 14px;
@@ -393,9 +339,7 @@
 
       padding: 14px 15px;
 
-      border:
-        1px solid #ead9e2;
-
+      border: 1px solid #ead9e2;
       border-radius: 14px;
 
       background: #fff;
@@ -409,9 +353,7 @@
 
     .attendance-options {
       display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
+      grid-template-columns: 1fr 1fr;
 
       gap: 10px;
 
@@ -429,8 +371,7 @@
 
       border-radius: 14px;
 
-      border:
-        1px solid #ead9e2;
+      border: 1px solid #ead9e2;
 
       background: #fff;
 
@@ -444,9 +385,7 @@
 
     .attendance-option input:checked + label {
       background: #f6d5e1;
-
       border-color: #e38aaa;
-
       color: #bd5079;
     }
 
@@ -458,12 +397,11 @@
       border: none;
       border-radius: 999px;
 
-      background:
-        linear-gradient(
-          135deg,
-          #ef90b3,
-          #e96897
-        );
+      background: linear-gradient(
+        135deg,
+        #ef90b3,
+        #e96897
+      );
 
       color: #fff;
 
@@ -473,45 +411,7 @@
       cursor: pointer;
     }
 
-
-    /* =========================
-       MUSIC BUTTON
-    ========================= */
-
-    #musicButton {
-      position: fixed;
-
-      top: 14px;
-      right: 14px;
-
-      width: 46px;
-      height: 46px;
-
-      z-index: 3000;
-
-      display: none;
-
-      border: none;
-      border-radius: 50%;
-
-      background:
-        rgba(255,255,255,.92);
-
-      box-shadow:
-        0 4px 15px rgba(0,0,0,.14);
-
-      font-size: 19px;
-
-      cursor: pointer;
-    }
-
-
-    /* =========================
-       MOBILE
-    ========================= */
-
     @media (max-width: 500px) {
-
       .page,
       #coverPage,
       #coverVideoPage {
@@ -520,29 +420,23 @@
 
       #openInvitation {
         font-size: 17px;
-
-        padding:
-          13px 28px;
+        padding: 13px 28px;
       }
 
       .map-button,
       .rsvp-main-button {
-        width: 82%;
-
+        width: 84%;
         font-size: 16px;
       }
-
     }
-
   </style>
 </head>
 
 
 <body>
 
-
   <!-- =========================
-       01 — STATIC COVER
+       01 — COVER PNG
   ========================= -->
 
   <section id="coverPage">
@@ -563,7 +457,6 @@
   </section>
 
 
-
   <!-- =========================
        02 — COVER VIDEO
   ========================= -->
@@ -575,11 +468,9 @@
 
     <video
       id="coverVideo"
-
       muted
       playsinline
       webkit-playsinline
-
       preload="metadata"
     >
 
@@ -588,12 +479,9 @@
         type="video/mp4"
       >
 
-      متصفحك لا يدعم تشغيل الفيديو.
-
     </video>
 
   </section>
-
 
 
   <!-- =========================
@@ -604,7 +492,25 @@
 
 
     <!-- =========================
-         03 — LOCATION
+         03 — INFO JPEG
+    ========================= -->
+
+    <section
+      id="infoPage"
+      class="page"
+    >
+
+      <img
+        src="./info.jpeg"
+        class="full-image"
+        alt="تفاصيل عيد ميلاد لينا"
+      >
+
+    </section>
+
+
+    <!-- =========================
+         04 — LOCATION JPEG
     ========================= -->
 
     <section
@@ -613,19 +519,15 @@
     >
 
       <img
-        src="./location.jpg"
+        src="./location.jpeg"
         class="full-image"
         alt="قاعة إيليا رام الله"
       >
 
-
       <a
         class="map-button"
-
         href="https://maps.app.goo.gl/Y6F9H54yMgRiaBzA9"
-
         target="_blank"
-
         rel="noopener"
       >
         📍 افتح موقع قاعة إيليا
@@ -634,9 +536,8 @@
     </section>
 
 
-
     <!-- =========================
-         04 — SECOND VIDEO
+         05 — SCENE 2 VIDEO
     ========================= -->
 
     <section
@@ -646,11 +547,9 @@
 
       <video
         id="scene2Video"
-
         muted
         playsinline
         webkit-playsinline
-
         preload="metadata"
       >
 
@@ -659,16 +558,13 @@
           type="video/mp4"
         >
 
-        متصفحك لا يدعم تشغيل الفيديو.
-
       </video>
 
     </section>
 
 
-
     <!-- =========================
-         05 — FINAL
+         06 — FINAL JPEG
     ========================= -->
 
     <section
@@ -677,11 +573,10 @@
     >
 
       <img
-        src="./final.jpg"
+        src="./final.jpeg"
         class="full-image"
         alt="بانتظاركم في عيد ميلاد لينا"
       >
-
 
       <button
         id="openRsvp"
@@ -696,7 +591,6 @@
   </main>
 
 
-
   <!-- =========================
        RSVP POPUP
   ========================= -->
@@ -709,21 +603,17 @@
         id="closeRsvp"
         class="rsvp-close"
         type="button"
-        aria-label="إغلاق"
       >
         ×
       </button>
-
 
       <h2 class="rsvp-title">
         تأكيد الحضور 🎈
       </h2>
 
-
       <p class="rsvp-subtitle">
         يسعدنا مشاركتكم فرحة عيد ميلاد لينا 💗
       </p>
-
 
       <div class="field">
 
@@ -733,16 +623,11 @@
 
         <input
           id="guestName"
-
           type="text"
-
           placeholder="اكتب اسمك"
-
-          autocomplete="name"
         >
 
       </div>
-
 
       <div class="field">
 
@@ -780,21 +665,15 @@
 
       </div>
 
-
-
       <div class="attendance-options">
 
         <div class="attendance-option">
 
           <input
             type="radio"
-
             id="attendingYes"
-
             name="attendance"
-
             value="سأحضر"
-
             checked
           >
 
@@ -804,16 +683,12 @@
 
         </div>
 
-
         <div class="attendance-option">
 
           <input
             type="radio"
-
             id="attendingNo"
-
             name="attendance"
-
             value="أعتذر عن الحضور"
           >
 
@@ -824,8 +699,6 @@
         </div>
 
       </div>
-
-
 
       <button
         id="sendRsvp"
@@ -840,42 +713,7 @@
   </div>
 
 
-
-  <!-- =========================
-       MUSIC
-  ========================= -->
-
-  <audio
-    id="backgroundMusic"
-
-    loop
-
-    preload="metadata"
-  >
-
-    <source
-      src="./music.mp3"
-      type="audio/mpeg"
-    >
-
-  </audio>
-
-
-  <button
-    id="musicButton"
-    type="button"
-    aria-label="تشغيل أو إيقاف الموسيقى"
-  >
-    🔊
-  </button>
-
-
-
   <script>
-
-    /* =========================
-       ELEMENTS
-    ========================= */
 
     const coverPage =
       document.getElementById("coverPage");
@@ -898,12 +736,6 @@
     const scene2Page =
       document.getElementById("scene2Page");
 
-    const music =
-      document.getElementById("backgroundMusic");
-
-    const musicButton =
-      document.getElementById("musicButton");
-
     const openRsvp =
       document.getElementById("openRsvp");
 
@@ -917,7 +749,6 @@
       document.getElementById("sendRsvp");
 
 
-
     /* =========================
        OPEN INVITATION
     ========================= */
@@ -926,96 +757,34 @@
       "click",
       function () {
 
-        /* نظهر الفيديو أولاً */
-
         coverVideoPage.style.display =
           "block";
 
-
-        /* نخفي الغلاف */
-
         coverPage.style.display =
           "none";
-
 
         window.scrollTo(
           0,
           0
         );
 
-
-        /* نعيد الفيديو للبداية */
-
         try {
-
           coverVideo.currentTime = 0;
-
         } catch (error) {}
 
-
-        /* تشغيل الفيديو */
-
-        const coverPlay =
-          coverVideo.play();
-
-
-        if (
-          coverPlay !== undefined
-        ) {
-
-          coverPlay.catch(
+        coverVideo
+          .play()
+          .catch(
             function(error) {
-
               console.log(
                 "Cover video error:",
                 error
               );
-
             }
           );
 
-        }
-
-
-        /* تشغيل الموسيقى */
-
-        const musicPlay =
-          music.play();
-
-
-        if (
-          musicPlay !== undefined
-        ) {
-
-          musicPlay
-            .then(
-              function() {
-
-                musicButton.style.display =
-                  "block";
-
-                musicButton.textContent =
-                  "🔊";
-
-              }
-            )
-            .catch(
-              function() {
-
-                musicButton.style.display =
-                  "block";
-
-                musicButton.textContent =
-                  "🔇";
-
-              }
-            );
-
-        }
-
       }
     );
-
 
 
     /* =========================
@@ -1026,16 +795,11 @@
       "ended",
       function () {
 
-        coverVideo.pause();
-
-
         coverVideoPage.style.display =
           "none";
 
-
         contentPages.style.display =
           "block";
-
 
         window.scrollTo(
           0,
@@ -1046,10 +810,8 @@
     );
 
 
-
     /* =========================
-       SECOND VIDEO
-       PLAYS WHEN VISIBLE
+       SCENE 2 AUTOPLAY
     ========================= */
 
     if (
@@ -1057,7 +819,7 @@
       in window
     ) {
 
-      const sceneObserver =
+      const observer =
         new IntersectionObserver(
 
           function(entries) {
@@ -1098,48 +860,11 @@
 
         );
 
-
-      sceneObserver.observe(
+      observer.observe(
         scene2Page
       );
 
     }
-
-
-
-    /* =========================
-       MUSIC BUTTON
-    ========================= */
-
-    musicButton.addEventListener(
-      "click",
-      function () {
-
-        if (
-          music.paused
-        ) {
-
-          music
-            .play()
-            .catch(
-              function() {}
-            );
-
-          musicButton.textContent =
-            "🔊";
-
-        } else {
-
-          music.pause();
-
-          musicButton.textContent =
-            "🔇";
-
-        }
-
-      }
-    );
-
 
 
     /* =========================
@@ -1159,7 +884,6 @@
 
       }
     );
-
 
 
     /* =========================
@@ -1189,8 +913,7 @@
       function(event) {
 
         if (
-          event.target ===
-          rsvpOverlay
+          event.target === rsvpOverlay
         ) {
 
           closePopup();
@@ -1201,9 +924,8 @@
     );
 
 
-
     /* =========================
-       RSVP SEND
+       SEND RSVP
     ========================= */
 
     sendRsvp.addEventListener(
@@ -1212,20 +934,14 @@
 
         const guestName =
           document
-            .getElementById(
-              "guestName"
-            )
+            .getElementById("guestName")
             .value
             .trim();
 
-
         const guestCount =
           document
-            .getElementById(
-              "guestCount"
-            )
+            .getElementById("guestCount")
             .value;
-
 
         const attendance =
           document.querySelector(
@@ -1233,9 +949,7 @@
           ).value;
 
 
-        if (
-          !guestName
-        ) {
+        if (!guestName) {
 
           alert(
             "اكتب الاسم أولاً 💗"
@@ -1245,8 +959,6 @@
 
         }
 
-
-        /* غيري هذا الرقم لاحقاً */
 
         const whatsappNumber =
           "970599123456";
