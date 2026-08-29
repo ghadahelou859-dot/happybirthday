@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
   <meta charset="UTF-8">
 
@@ -28,10 +27,6 @@
       font-family: Arial, sans-serif;
     }
 
-    body {
-      color: #4d3b4f;
-    }
-
     img,
     video {
       display: block;
@@ -54,13 +49,13 @@
     }
 
     .full-image {
-      display: block;
       width: 100%;
       height: auto;
+      display: block;
     }
 
     /* =========================
-       01 — COVER
+       COVER
     ========================= */
 
     #coverPage {
@@ -68,20 +63,19 @@
       width: 100%;
       max-width: 500px;
       margin: 0 auto;
-      overflow: hidden;
       background: #fff;
     }
 
     #coverImage {
       width: 100%;
       height: auto;
-      display: block;
     }
 
     #openInvitation {
       position: absolute;
       left: 50%;
       bottom: 6%;
+
       transform: translateX(-50%);
 
       z-index: 50;
@@ -91,12 +85,11 @@
 
       padding: 14px 32px;
 
-      background:
-        linear-gradient(
-          135deg,
-          #f3a2bf,
-          #ea6e99
-        );
+      background: linear-gradient(
+        135deg,
+        #f3a2bf,
+        #ea6e99
+      );
 
       color: white;
 
@@ -108,6 +101,9 @@
 
       cursor: pointer;
       white-space: nowrap;
+
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
     }
 
     #openInvitation:active {
@@ -117,22 +113,18 @@
     }
 
     /* =========================
-       02 — COVER VIDEO
+       COVER VIDEO
     ========================= */
 
     #coverVideoPage {
       display: none;
-
       width: 100%;
       max-width: 500px;
-
       margin: 0 auto;
-
       background: #000;
     }
 
     #coverVideo {
-      display: block;
       width: 100%;
       height: auto;
       background: #000;
@@ -154,24 +146,27 @@
 
     .transparent-hotspot {
       position: absolute;
-      z-index: 50;
+
+      z-index: 999;
 
       display: block;
 
       margin: 0;
       padding: 0;
 
-      border: 0;
+      border: none;
+      outline: none;
+
       background: transparent;
 
       cursor: pointer;
 
       -webkit-tap-highlight-color: transparent;
-      outline: none;
+      touch-action: manipulation;
     }
 
     /* =========================
-       LOCATION HOTSPOT
+       LOCATION
     ========================= */
 
     .location-hotspot {
@@ -180,12 +175,12 @@
 
       transform: translateX(-50%);
 
-      width: 78%;
-      height: 9%;
+      width: 80%;
+      height: 10%;
     }
 
     /* =========================
-       SECOND VIDEO
+       SCENE 2
     ========================= */
 
     #scene2Page {
@@ -195,7 +190,6 @@
     }
 
     #scene2Video {
-      display: block;
       width: 100%;
       height: auto;
       background: #000;
@@ -203,17 +197,18 @@
 
     /* =========================
        RSVP HOTSPOT
-       مضبوط فوق كلمة تأكيد الحضور
+       مساحة أكبر فوق زر
+       تأكيد الحضور
     ========================= */
 
     .rsvp-hotspot {
-      left: 50%;
-      top: 23.8%;
+      left: 14%;
+      top: 19.5%;
 
-      transform: translateX(-50%);
+      width: 72%;
+      height: 14%;
 
-      width: 63%;
-      height: 9.5%;
+      z-index: 999;
     }
 
     /* =========================
@@ -247,6 +242,7 @@
 
       width: min(92vw, 430px);
       max-height: 90vh;
+
       overflow-y: auto;
 
       padding: 28px 22px 24px;
@@ -257,7 +253,7 @@
         rgba(255,252,248,.99);
 
       box-shadow:
-        0 15px 50px rgba(0,0,0,.2);
+        0 15px 50px rgba(0,0,0,.20);
 
       text-align: center;
     }
@@ -307,6 +303,7 @@
 
     .field label {
       display: block;
+
       margin-bottom: 7px;
 
       font-size: 14px;
@@ -335,7 +332,9 @@
 
     .attendance-options {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr 1fr;
 
       gap: 10px;
 
@@ -351,7 +350,9 @@
 
       padding: 13px 10px;
 
-      border: 1px solid #ead9e2;
+      border:
+        1px solid #ead9e2;
+
       border-radius: 14px;
 
       background: #fff;
@@ -378,12 +379,11 @@
       border: none;
       border-radius: 999px;
 
-      background:
-        linear-gradient(
-          135deg,
-          #ef90b3,
-          #e96897
-        );
+      background: linear-gradient(
+        135deg,
+        #ef90b3,
+        #e96897
+      );
 
       color: #fff;
 
@@ -431,6 +431,7 @@
 
   </section>
 
+
   <!-- =========================
        02 — COVER VIDEO
   ========================= -->
@@ -455,6 +456,7 @@
 
   </section>
 
+
   <!-- =========================
        CONTENT
   ========================= -->
@@ -477,6 +479,7 @@
       >
 
     </section>
+
 
     <!-- =========================
          04 — LOCATION
@@ -503,6 +506,7 @@
 
     </section>
 
+
     <!-- =========================
          05 — SECOND VIDEO
     ========================= -->
@@ -527,6 +531,7 @@
 
     </section>
 
+
     <!-- =========================
          06 — FINAL
     ========================= -->
@@ -542,16 +547,23 @@
         alt="بانتظاركم في عيد ميلاد لينا"
       >
 
+      <!--
+        منطقة ضغط شفافة وكبيرة
+        فوق زر تأكيد الحضور
+      -->
+
       <button
         id="openRsvp"
         class="transparent-hotspot rsvp-hotspot"
         type="button"
         aria-label="تأكيد الحضور"
+        onclick="openRsvpPopup()"
       ></button>
 
     </section>
 
   </main>
+
 
   <!-- =========================
        RSVP POPUP
@@ -629,6 +641,7 @@
 
       </div>
 
+
       <div class="attendance-options">
 
         <div class="attendance-option">
@@ -647,6 +660,7 @@
 
         </div>
 
+
         <div class="attendance-option">
 
           <input
@@ -664,6 +678,7 @@
 
       </div>
 
+
       <button
         id="sendRsvp"
         class="send-rsvp"
@@ -675,6 +690,7 @@
     </div>
 
   </div>
+
 
   <script>
 
@@ -699,14 +715,11 @@
     const scene2Page =
       document.getElementById("scene2Page");
 
-    const openRsvp =
-      document.getElementById("openRsvp");
+    const rsvpOverlay =
+      document.getElementById("rsvpOverlay");
 
     const closeRsvp =
       document.getElementById("closeRsvp");
-
-    const rsvpOverlay =
-      document.getElementById("rsvpOverlay");
 
     const sendRsvp =
       document.getElementById("sendRsvp");
@@ -788,8 +801,7 @@
       }
 
       const rect =
-        scene2Video
-          .getBoundingClientRect();
+        scene2Video.getBoundingClientRect();
 
       const screenHeight =
         window.innerHeight;
@@ -809,20 +821,13 @@
           scene2Video.currentTime = 0;
         } catch (error) {}
 
-
-        const playPromise =
-          scene2Video.play();
-
-
-        if (
-          playPromise !== undefined
-        ) {
-
-          playPromise.catch(
+        scene2Video
+          .play()
+          .catch(
             function(error) {
 
               console.log(
-                "scene2 autoplay blocked:",
+                "Scene 2 autoplay blocked:",
                 error
               );
 
@@ -830,8 +835,6 @@
 
             }
           );
-
-        }
 
       }
 
@@ -870,33 +873,30 @@
 
 
     /* =========================
-       RSVP OPEN
+       OPEN RSVP
     ========================= */
 
-    openRsvp.addEventListener(
-      "click",
-      function () {
+    function openRsvpPopup() {
 
-        rsvpOverlay
-          .classList
-          .add("show");
+      rsvpOverlay.classList.add(
+        "show"
+      );
 
-        document.body.style.overflow =
-          "hidden";
+      document.body.style.overflow =
+        "hidden";
 
-      }
-    );
+    }
 
 
     /* =========================
-       RSVP CLOSE
+       CLOSE RSVP
     ========================= */
 
     function closePopup() {
 
-      rsvpOverlay
-        .classList
-        .remove("show");
+      rsvpOverlay.classList.remove(
+        "show"
+      );
 
       document.body.style.overflow =
         "";
@@ -915,10 +915,11 @@
       function(event) {
 
         if (
-          event.target ===
-          rsvpOverlay
+          event.target === rsvpOverlay
         ) {
+
           closePopup();
+
         }
 
       }
@@ -939,17 +940,17 @@
             .value
             .trim();
 
+
         const guestCount =
           document
             .getElementById("guestCount")
             .value;
 
+
         const attendance =
-          document
-            .querySelector(
-              'input[name="attendance"]:checked'
-            )
-            .value;
+          document.querySelector(
+            'input[name="attendance"]:checked'
+          ).value;
 
 
         if (!guestName) {
@@ -959,8 +960,15 @@
           );
 
           return;
+
         }
 
+
+        /*
+          غيري الرقم إلى رقم الواتساب
+          بدون +
+          وبدون مسافات
+        */
 
         const whatsappNumber =
           "970599123456";
@@ -991,5 +999,4 @@
   </script>
 
 </body>
-
 </html>
