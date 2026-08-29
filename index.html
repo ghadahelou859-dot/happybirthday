@@ -60,7 +60,7 @@
     }
 
     /* =========================
-       01 — COVER PNG
+       COVER
     ========================= */
 
     #coverPage {
@@ -68,14 +68,14 @@
       width: 100%;
       max-width: 500px;
       margin: 0 auto;
-      overflow: hidden;
       background: #fff;
+      overflow: hidden;
     }
 
     #coverImage {
       width: 100%;
       height: auto;
-      object-fit: contain;
+      display: block;
     }
 
     #openInvitation {
@@ -97,23 +97,26 @@
         #ea6e99
       );
 
-      color: #fff;
+      color: white;
+
       font-size: 18px;
       font-weight: 700;
 
       box-shadow:
-        0 8px 24px rgba(0,0,0,.18);
+        0 8px 24px rgba(0, 0, 0, .18);
 
       cursor: pointer;
       white-space: nowrap;
     }
 
     #openInvitation:active {
-      transform: translateX(-50%) scale(.97);
+      transform:
+        translateX(-50%)
+        scale(.97);
     }
 
     /* =========================
-       02 — COVER VIDEO
+       COVER VIDEO
     ========================= */
 
     #coverVideoPage {
@@ -150,8 +153,10 @@
 
     .map-button {
       position: absolute;
+
       left: 50%;
       bottom: 7%;
+
       transform: translateX(-50%);
 
       z-index: 20;
@@ -165,7 +170,7 @@
       text-decoration: none;
       text-align: center;
 
-      color: #fff;
+      color: white;
 
       background: linear-gradient(
         135deg,
@@ -181,18 +186,23 @@
     }
 
     .map-button:active {
-      transform: translateX(-50%) scale(.97);
+      transform:
+        translateX(-50%)
+        scale(.97);
     }
 
     /* =========================
-       SCENE 2
+       SECOND VIDEO
     ========================= */
 
     #scene2Page {
+      position: relative;
+      width: 100%;
       background: #000;
     }
 
     #scene2Video {
+      display: block;
       width: 100%;
       height: auto;
       background: #000;
@@ -208,8 +218,10 @@
 
     .rsvp-main-button {
       position: absolute;
+
       left: 50%;
       bottom: 8%;
+
       transform: translateX(-50%);
 
       z-index: 20;
@@ -227,7 +239,7 @@
         #eb6d99
       );
 
-      color: #fff;
+      color: white;
 
       font-size: 18px;
       font-weight: 700;
@@ -239,7 +251,7 @@
     }
 
     /* =========================
-       RSVP POPUP
+       RSVP
     ========================= */
 
     #rsvpOverlay {
@@ -254,7 +266,8 @@
 
       padding: 20px;
 
-      background: rgba(60,45,64,.48);
+      background:
+        rgba(60,45,64,.48);
 
       backdrop-filter: blur(6px);
     }
@@ -274,7 +287,8 @@
 
       border-radius: 26px;
 
-      background: rgba(255,252,248,.99);
+      background:
+        rgba(255,252,248,.99);
 
       box-shadow:
         0 15px 50px rgba(0,0,0,.2);
@@ -284,7 +298,6 @@
 
     .rsvp-close {
       position: absolute;
-
       top: 12px;
       left: 14px;
 
@@ -303,9 +316,7 @@
 
     .rsvp-title {
       margin-bottom: 8px;
-
       font-size: 25px;
-
       color: #d85f8d;
     }
 
@@ -345,7 +356,6 @@
       background: #fff;
 
       font-size: 16px;
-
       color: #4f3e4d;
 
       outline: none;
@@ -374,7 +384,6 @@
       border: 1px solid #ead9e2;
 
       background: #fff;
-
       color: #654f64;
 
       font-size: 15px;
@@ -410,6 +419,10 @@
 
       cursor: pointer;
     }
+
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media (max-width: 500px) {
       .page,
@@ -471,28 +484,26 @@
       muted
       playsinline
       webkit-playsinline
-      preload="metadata"
+      preload="auto"
     >
-
       <source
         src="./cover.mp4"
         type="video/mp4"
       >
-
     </video>
 
   </section>
 
 
   <!-- =========================
-       REST OF INVITATION
+       REST
   ========================= -->
 
   <main id="contentPages">
 
 
     <!-- =========================
-         03 — INFO JPEG
+         03 — INFO
     ========================= -->
 
     <section
@@ -510,7 +521,7 @@
 
 
     <!-- =========================
-         04 — LOCATION JPEG
+         04 — LOCATION
     ========================= -->
 
     <section
@@ -537,7 +548,7 @@
 
 
     <!-- =========================
-         05 — SCENE 2 VIDEO
+         05 — SECOND VIDEO
     ========================= -->
 
     <section
@@ -550,21 +561,19 @@
         muted
         playsinline
         webkit-playsinline
-        preload="metadata"
+        preload="auto"
       >
-
         <source
           src="./scene2.mp4"
           type="video/mp4"
         >
-
       </video>
 
     </section>
 
 
     <!-- =========================
-         06 — FINAL JPEG
+         06 — FINAL
     ========================= -->
 
     <section
@@ -715,6 +724,10 @@
 
   <script>
 
+    /* =========================
+       ELEMENTS
+    ========================= */
+
     const coverPage =
       document.getElementById("coverPage");
 
@@ -763,10 +776,7 @@
         coverPage.style.display =
           "none";
 
-        window.scrollTo(
-          0,
-          0
-        );
+        window.scrollTo(0, 0);
 
         try {
           coverVideo.currentTime = 0;
@@ -801,9 +811,13 @@
         contentPages.style.display =
           "block";
 
-        window.scrollTo(
-          0,
-          0
+        window.scrollTo(0, 0);
+
+        setTimeout(
+          function () {
+            playScene2IfVisible();
+          },
+          500
         );
 
       }
@@ -811,60 +825,100 @@
 
 
     /* =========================
-       SCENE 2 AUTOPLAY
+       SECOND VIDEO
+       MOBILE SAFE
     ========================= */
 
-    if (
-      "IntersectionObserver"
-      in window
-    ) {
+    let scene2Started = false;
 
-      const observer =
-        new IntersectionObserver(
 
-          function(entries) {
+    function playScene2IfVisible() {
 
-            entries.forEach(
-              function(entry) {
+      if (scene2Started) {
+        return;
+      }
 
-                if (
-                  entry.isIntersecting &&
-                  entry.intersectionRatio >= 0.5
-                ) {
+      const rect =
+        scene2Video.getBoundingClientRect();
 
-                  scene2Video
-                    .play()
-                    .catch(
-                      function() {}
-                    );
+      const screenHeight =
+        window.innerHeight;
 
-                } else {
 
-                  scene2Video.pause();
+      if (
+        rect.top <
+        screenHeight * 0.85
+        &&
+        rect.bottom >
+        screenHeight * 0.15
+      ) {
 
-                }
+        scene2Started = true;
 
-              }
-            );
+        try {
+          scene2Video.currentTime = 0;
+        } catch (error) {}
 
-          },
 
-          {
-            threshold:
-              [
-                0,
-                0.5,
-                1
-              ]
-          }
+        const playPromise =
+          scene2Video.play();
 
-        );
 
-      observer.observe(
-        scene2Page
-      );
+        if (
+          playPromise !== undefined
+        ) {
+
+          playPromise.catch(
+            function(error) {
+
+              console.log(
+                "scene2 autoplay blocked:",
+                error
+              );
+
+              scene2Started = false;
+
+            }
+          );
+
+        }
+
+      }
 
     }
+
+
+    window.addEventListener(
+      "scroll",
+      playScene2IfVisible,
+      {
+        passive: true
+      }
+    );
+
+
+    window.addEventListener(
+      "resize",
+      playScene2IfVisible
+    );
+
+
+    /* تشغيل احتياطي عند لمس الفيديو */
+
+    scene2Video.addEventListener(
+      "click",
+      function () {
+
+        scene2Started = true;
+
+        scene2Video
+          .play()
+          .catch(
+            function() {}
+          );
+
+      }
+    );
 
 
     /* =========================
@@ -913,7 +967,8 @@
       function(event) {
 
         if (
-          event.target === rsvpOverlay
+          event.target ===
+          rsvpOverlay
         ) {
 
           closePopup();
@@ -938,10 +993,12 @@
             .value
             .trim();
 
+
         const guestCount =
           document
             .getElementById("guestCount")
             .value;
+
 
         const attendance =
           document.querySelector(
@@ -959,6 +1016,11 @@
 
         }
 
+
+        /*
+          غيري هذا الرقم
+          إلى رقم الواتساب الحقيقي
+        */
 
         const whatsappNumber =
           "970599123456";
